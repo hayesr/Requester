@@ -12,7 +12,8 @@ body{
 }
 
 #page{
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
+    padding: 2em;
     background-color: #fff;
 }
