@@ -43,15 +43,17 @@
     </div>
     
     <div class="field">
+      <%= label :need_ids, "Event Needs" %>
   		<ul>
   			<% for need in Need.all %>
   			<li>
   				<%= check_box_tag "event[need_ids][]", need.id, @event.needs.include?(need) %>
-  				<%= need.kind %>
+  				<%= need.name %>
   			</li>
   			<% end %>
   		</ul>
   	</div>
+  	
   </fieldset>
   
   <div class="actions">

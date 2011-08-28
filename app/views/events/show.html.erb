@@ -17,12 +17,12 @@
 
 <p>
   <b>Start time:</b>
-  <%= @event.start_time %>
+  <%= @event.fstart %>
 </p>
 
 <p>
   <b>End time:</b>
-  <%= @event.end_time %>
+  <%= @event.fend %>
 </p>
 
 <p>
@@ -33,6 +33,15 @@
 <p>
   <b>Area:</b>
   <%= @event.area %>
+</p>
+
+<p>
+  <b>Needs:</b>
+  <ul>
+    <% @event.needs.each do |need| %>
+    <li><%= need.name %></li>
+    <% end %>
+  </ul>
 </p>
 
 <p>
