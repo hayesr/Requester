@@ -1,0 +1,60 @@
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset id="contact_info">
+    <h3>How can we contact you?</h3>
+    <div class="field">
+      <%= f.label :requester, "Name" %><br />
+      <%= f.text_field :requester %>
+    </div>
+    <div class="field">
+      <%= f.label :requester_email, "Email" %><br />
+      <%= f.text_field :requester_email %>
+    </div>
+  </fieldset>
+  
+  <fieldset id="event_info">
+    <h3>What are the details for your event?</h3>
+    <div class="field">
+      <%= f.label :title, "Event Title" %><br />
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :start_time %><br />
+      <%= f.datetime_select :start_time %>
+    </div>
+    <div class="field">
+      <%= f.label :end_time %><br />
+      <%= f.datetime_select :end_time %>
+    </div>
+    <div class="field">
+      <%= f.label :site_id %><br />
+      <%= f.collection_select :site_id, Site.all, :id, :name %>
+    </div>
+    
+    <div class="field">
+  		<ul>
+  			<% for need in Need.all %>
+  			<li>
+  				<%= check_box_tag "event[need_ids][]", need.id, @event.needs.include?(need) %>
+  				<%= need.kind %>
+  			</li>
+  			<% end %>
+  		</ul>
+  	</div>
+  </fieldset>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  requester: MyString
+  requester_email: MyString
+  title: MyString
+  start_time: 2011-08-26 22:06:29
+  end_time: 2011-08-26 22:06:29
+  site_id: 1
+  area: MyString
+  state: MyString
+
+two:
+  requester: MyString
+  requester_email: MyString
+  title: MyString
+  start_time: 2011-08-26 22:06:29
+  end_time: 2011-08-26 22:06:29
+  site_id: 1
+  area: MyString
+  state: MyString

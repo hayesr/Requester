@@ -5,6 +5,7 @@ gem 'rails', '3.1.0.rc6'
 gem 'sqlite3'
 gem 'capistrano'
 gem 'state_machine'
+gem 'jquery-rails'
 
 group :development do
      gem 'interactive_editor'
@@ -22,4 +23,3 @@ group :development, :test do
   gem 'guard-test'
   gem 'growl'
 end
-
