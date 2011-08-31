@@ -22,7 +22,7 @@ class Event < ActiveRecord::Base
     end_time.strftime("%l:%M %p") unless end_time.nil?
   end
   
-  def by_site(site)
+  def self.by_site(site)
     where(:site_id => site.id)
   end
   

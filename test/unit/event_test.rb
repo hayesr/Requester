@@ -3,11 +3,6 @@ require 'test_helper'
 class EventTest < ActiveSupport::TestCase
   setup do
     @event = Event.new
-    @future_pending  = events(:future_pending)
-    @future_approved = events(:future_approved)
-    @past_pending    = events(:past_pending)
-    @past_approved   = events(:past_approved)
-    
     
   end
   
@@ -26,6 +21,9 @@ class EventTest < ActiveSupport::TestCase
   
   test "Events can be scoped by site" do
     @cc_events = Event.by_site sites(:cc)
+    assert_equal @cc_events.first.site, sites(:cc)
+    assert_not_equal @cc_events.first.site, sites(:bp)
+    assert_not_equal @cc_events.first.site, sites(:mv)
   end
   
   test "Submitted event sends email to site admin" do
