@@ -2,6 +2,8 @@ class Event < ActiveRecord::Base
   
   has_and_belongs_to_many :needs
   
+  # TODO attr_accessible protect state
+  
   state_machine :state, :initial => :pending do
     event :approve do
       transition :pending => :approved

@@ -1,7 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
+lights:
+  id: 1
+  name: Lights
 
-two:
-  name: MyString
+air:
+  id: 2
+  name: "Heating/Air"
+  
+cust:
+  id: 3
+  name: Custodial
+  
+setup:
+  id: 4
+  name: Setup

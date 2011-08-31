@@ -14,9 +14,19 @@ class EventTest < ActiveSupport::TestCase
     assert_equal @event.state, "approved"
   end
   
+  test "Events can be denied" do
+    # Need denial message column
+  end
+  
+  test "Events can be scoped by site" do
+    # 
+  end
+  
   test "Submitted event sends email to site admin" do
   end
   
   test "Submitted event sends email to staff according to need" do
   end
+  
+  # emails staff when approved
 end

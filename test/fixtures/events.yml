@@ -1,21 +1,41 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
-one:
-  requester: MyString
-  requester_email: MyString
-  title: MyString
-  start_time: 2011-08-26 22:06:29
-  end_time: 2011-08-26 22:06:29
+future_pending:
+  requester: Sally McPenderson
+  requester_email: sally@example.com
+  title: Scout Meeting
+  start_time: <%= Time.now + 1.day %>
+  end_time: <%= Time.now + 1.day + 2.hours %>
   site_id: 1
-  area: MyString
-  state: MyString
+  area: MPR
+  state: pending
 
-two:
-  requester: MyString
-  requester_email: MyString
-  title: MyString
-  start_time: 2011-08-26 22:06:29
-  end_time: 2011-08-26 22:06:29
-  site_id: 1
-  area: MyString
-  state: MyString
+future_approved:
+  requester: Jimmy Approvalton
+  requester_email: jimmy@example.com
+  title: Shareholder Meeting
+  start_time: <%= Time.now + 3.days %>
+  end_time: <%= Time.now + 3.days + 1.hours %>
+  site_id: 2
+  area: Upper Pod Closet
+  state: approved
+
+past_approved:
+  requester: Brian Blandersmith
+  requester_email: brian@example.com
+  title: Evil League of Evil Monthly
+  start_time: <%= Time.now - 3.weeks %>
+  end_time: <%= Time.now - 3.weeks + 1.hours %>
+  site_id: 3
+  area: MPR
+  state: approved
+  
+past_pending:
+  requester: Kelly Slobermane
+  requester_email: kelly@example.com
+  title: Singles Competative Crochet
+  start_time: <%= Time.now - 2.weeks %>
+  end_time: <%= Time.now - 2.weeks + 1.hours %>
+  site_id: 3
+  area: MPR
+  state: pending
