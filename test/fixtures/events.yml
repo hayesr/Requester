@@ -27,7 +27,7 @@ past_approved:
   start_time: <%= Time.now - 3.weeks %>
   end_time: <%= Time.now - 3.weeks + 1.hours %>
   site_id: 3
-  area: MPR
+  area: Ballfield
   state: approved
   
 past_pending:
