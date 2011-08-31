@@ -25,7 +25,7 @@ class EventTest < ActiveSupport::TestCase
   end
   
   test "Events can be scoped by site" do
-    puts @future_pending.site.name
+    @cc_events = Event.by_site sites(:cc)
   end
   
   test "Submitted event sends email to site admin" do
