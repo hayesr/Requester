@@ -2,6 +2,8 @@ Requester::Application.routes.draw do
   devise_for :users
 
   resources :events
+  match 'events/pending/:site' => 'events#pending', :as => 'pending_events', :via => :get
+  match 'events/approved/:site' => 'events#approved', :as => 'approved_events', :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

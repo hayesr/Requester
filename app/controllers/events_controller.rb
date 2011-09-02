@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+  
+  before_filter :authenticate_user!, :except => ['new', 'create']
+  
   # GET /events
   # GET /events.json
   def index
@@ -8,6 +11,16 @@ class EventsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @events }
     end
+  end
+  
+  def pending
+    @site = params[:site]
+    render :text => "Pending list for #{@site}"
+  end
+  
+  def approved
+    @site = params[:site]
+    render :text => "Pending list for #{@site}"
   end
 
   # GET /events/1
