@@ -6,9 +6,10 @@ future_pending:
   title: Scout Meeting
   start_time: <%= Time.now + 1.day %>
   end_time: <%= Time.now + 1.day + 2.hours %>
-  site_id: 1
+  site: bp
   area: MPR
   state: pending
+  needs: lights, air
 
 future_approved:
   requester: Jimmy Approvalton
@@ -16,9 +17,10 @@ future_approved:
   title: Shareholder Meeting
   start_time: <%= Time.now + 3.days %>
   end_time: <%= Time.now + 3.days + 1.hours %>
-  site_id: 2
+  site: cc
   area: Upper Pod Closet
   state: approved
+  needs: setup, lights, cust
 
 past_approved:
   requester: Brian Blandersmith
@@ -26,9 +28,10 @@ past_approved:
   title: Evil League of Evil Monthly
   start_time: <%= Time.now - 3.weeks %>
   end_time: <%= Time.now - 3.weeks + 1.hours %>
-  site_id: 3
+  site_id: em
   area: Ballfield
   state: approved
+  needs: setup, lights
   
 past_pending:
   requester: Kelly Slobermane
@@ -36,6 +39,7 @@ past_pending:
   title: Singles Competative Crochet
   start_time: <%= Time.now - 2.weeks %>
   end_time: <%= Time.now - 2.weeks + 1.hours %>
-  site_id: 3
+  site_id: hi
   area: MPR
   state: pending
+  needs: setup, lights, cust, air

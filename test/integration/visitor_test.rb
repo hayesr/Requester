@@ -12,4 +12,9 @@ class VisitorTest < ActiveSupport::TestCase
     visit "/events/pending/cc"
     assert_match "You need to sign in or sign up before continuing", page.body
   end
+  
+  test "Visitors cannot see approved events" do
+    visit "/events/approved/cc"
+    assert_match "You need to sign in or sign up before continuing", page.body
+  end
 end

@@ -14,13 +14,13 @@ class EventsController < ApplicationController
   end
   
   def pending
-    @site = params[:site]
-    render :text => "Pending list for #{@site}"
+    @site = Site.where(:abbr => params[:site])
+    @events = Event.by_site(@site)
   end
   
   def approved
-    @site = params[:site]
-    render :text => "Pending list for #{@site}"
+    @site = Site.where(:abbr => params[:site])
+    @events = Event.by_site(@site)
   end
 
   # GET /events/1

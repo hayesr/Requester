@@ -23,7 +23,7 @@ class Event < ActiveRecord::Base
   end
   
   def self.by_site(site)
-    where(:site_id => site.id)
+    where(:site_id => site)
   end
   
 end

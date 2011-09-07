@@ -1,17 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
 lights:
-  id: 1
   name: Lights
 
 air:
-  id: 2
   name: "Heating/Air"
   
 cust:
-  id: 3
   name: Custodial
   
 setup:
-  id: 4
   name: Setup
