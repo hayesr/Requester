@@ -1,0 +1,9 @@
+
+<h1>Pending events</h1>
+
+<p>Your sites:</p>
+<ul>
+  <% current_user.sites.each do |site| %>
+  <li><%= site.name %></li>
+  <% end %>
+</ul>
