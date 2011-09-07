@@ -1,37 +1,36 @@
 <h1>Listing events</h1>
 
-<table>
-  <tr>
-    <th>Requester</th>
-    <th>Requester email</th>
-    <th>Title</th>
-    <th>Start time</th>
-    <th>End time</th>
-    <th>Site</th>
-    <th>Area</th>
-    <th>State</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<p><%= link_to 'New Event', new_event_path %></p>
 
 <% @events.each do |event| %>
-  <tr>
-    <td><%= event.requester %></td>
-    <td><%= event.requester_email %></td>
-    <td><%= event.title %></td>
-    <td><%= event.start_time %></td>
-    <td><%= event.end_time %></td>
-    <td><%= event.site_id %></td>
-    <td><%= event.area %></td>
-    <td><%= event.state %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<div class="event">
+  <h3><%= event.title %></h3>
+  
+  <%= event.site.name %>
+  
+  <div class="date">
+  <%= event.fdate %> from <%= event.fstart %> to <%= event.fend %>
+  </div>
+  <div class="requester">
+  <%= event.requester %>
+  <%= event.requester_email %>
+  </div>
+  
+  <div class="areas">
+    <%= event.area %>
+  </div>
+  
+  <%= event.state %>
+  
+  <p>
+  <%= link_to 'Show', event %>
+  <%= link_to 'Edit', edit_event_path(event) %>
+  <%= link_to 'Destroy', event, confirm: 'Are you sure?', method: :delete %>
+  </p>
+</div>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Event', new_event_path %>
+

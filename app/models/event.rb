@@ -6,12 +6,16 @@ class Event < ActiveRecord::Base
   
   state_machine :state, :initial => :pending do
     event :approve do
-      transition :pending => :approved
+      transition [:pending, :denied] => :approved
+    end
+    
+    event :deny do
+      transition [:pending, :approved] => :denied
     end
   end
   
   def fdate
-    start_time.strftime("%A, %b %d") unless date.nil?
+    start_time.strftime("%b %e %Y") unless start_time.nil?
   end
   
   def fstart
@@ -24,6 +28,14 @@ class Event < ActiveRecord::Base
   
   def self.by_site(site)
     where(:site_id => site)
+  end
+  
+  def self.pending
+    where(:state => 'pending')
+  end
+  
+  def self.approved
+    where(:state => 'approved')
   end
   
 end

@@ -1,0 +1,17 @@
+
+<h1>Approved events</h1>
+
+<p><%= current_user.email %> sites:</p>
+<ul>
+  <% current_user.sites.each do |site| %>
+  <li><%= site.name %></li>
+  <% end %>
+</ul>
+
+<p><%= @site.name %> Events:</p>
+
+<ul>
+  <% @events.each do |event| %>
+  <li><%= link_to event.title, event %></li>
+  <% end %>
+</ul>
