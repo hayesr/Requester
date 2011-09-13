@@ -1,0 +1,57 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= depends_on events
+ *= depends_on normal
+*/
+
+@import "normal.css.scss";
+
+$base-color: #2b3033;
+
+body{
+    color: darken($base-color, 15%);
+    background-color: $base-color;
+    font-family: "Helvetica", "Helvetica Neue", Arial, sans-serif;
+}
+
+form h3{
+    font-size: 1.2em;
+    color: #95afbd;
+    font-weight: normal;
+    padding: 0 0.6em;
+}
+
+#rh{
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+#page{
+    width: 90%;
+    margin: 0 auto;
+    background-color: #F2F6F8;
+}
+
+@import "events.css.scss";
+
+/* ==|== media queries ======================================================
+   PLACEHOLDER Media Queries for Responsive Design.
+   These override the primary ('mobile first') styles
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 480px) {
+  /* Style adjustments for viewports 480px and over go here */
+  body{
+      background-color: #24282A;
+  }
+  
+  @import "480/*";
+}
+
+@media only screen and (min-width: 768px) {
+  /* Style adjustments for viewports 768px and over go here */
+}
