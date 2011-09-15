@@ -10,30 +10,42 @@
 @import "normal.css.scss";
 
 $base-color: #2b3033;
-
+$text-color: #444;
+@mixin box-shadow($args){
+    -webkit-box-shadow: $args;
+}
 body{
-    color: darken($base-color, 15%);
-    background-color: $base-color;
+    color: $text-color;
     font-family: "Helvetica", "Helvetica Neue", Arial, sans-serif;
 }
 
 form h3{
     font-size: 1.2em;
-    color: #95afbd;
-    font-weight: normal;
+    color: lighten(saturate($base-color, 10%), 40%);
+    font-weight: normal; 
     padding: 0 0.6em;
 }
 
+fieldset{
+    border-top: 1px solid lighten($base-color, 60%);
+    border-bottom: 1px solid lighten($base-color, 60%);
+    margin-bottom: 2px;
+    padding: 1em 0.4em 1em 0;
+}
+
 #rh{
-    max-width: 480px;
+    max-width: 479px;
     margin: 0 auto;
 }
 
 #page{
     width: 90%;
     margin: 0 auto;
-    background-color: #F2F6F8;
+    background-color: #fafdff;
+    
 }
+
+
 
 @import "events.css.scss";
 
@@ -45,10 +57,7 @@ form h3{
 
 @media only screen and (min-width: 480px) {
   /* Style adjustments for viewports 480px and over go here */
-  body{
-      background-color: #24282A;
-  }
-  
+  body{ background-color: $base-color; }
   @import "480/*";
 }
 
