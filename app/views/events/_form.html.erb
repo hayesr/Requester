@@ -30,13 +30,23 @@
       <%= f.text_field :title %>
     </div>
     <div class="field">
-      <%= f.label :start_time %><br />
-      <%= f.datetime_select :start_time %>
+      <% # find startoptions in events_helper %>
+      <%= f.label :start_time, "Date" %><br />
+      <%= f.date_select :start_time, startoptions %>
     </div>
     <div class="field">
-      <%= f.label :end_time %><br />
-      <%= f.datetime_select :end_time %>
+      <%= label_tag "Start time" %>
+      <%= configured_select_hour(Time.now, "start") %> :
+      <%= configured_select_minute(Time.now, "start") %>
     </div>
+    
+    <div class="field">
+      <%= label_tag "End time" %>
+      <%= f.date_select :end_time, :discard_year => true, :discard_month => true, :discard_day => true %>
+      <%= configured_select_hour(Time.now + 1.hour, "end") %> :
+      <%= configured_select_minute(Time.now, "end") %>
+    </div>
+
     <div class="field">
       <%= f.label :site_id %><br />
       <%= f.collection_select :site_id, Site.all, :id, :name %>

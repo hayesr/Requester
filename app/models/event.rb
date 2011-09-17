@@ -4,7 +4,14 @@ class Event < ActiveRecord::Base
   belongs_to :site
   has_and_belongs_to_many :needs
   
+  validates_presence_of :start_time, :end_time, :site
+  
+  
+  before_save :set_endtime_date_to_starttime_date
+  
   # TODO attr_accessible protect state
+  
+  #attr_accessor :start_hour, :start_minute, :end_hour, :end_minute
   
   state_machine :state, :initial => :pending do
     event :approve do
@@ -16,6 +23,7 @@ class Event < ActiveRecord::Base
     end
   end
   
+  # scope by site, accepts int or array
   def self.by_site(site)
     where(:site_id => site)
   end
@@ -39,6 +47,15 @@ class Event < ActiveRecord::Base
   def fend
     end_time.strftime("%l:%M %p") unless end_time.nil?
   end
+  
+  protected
+  
+  def set_endtime_date_to_starttime_date
+    s = self.start_time.in_time_zone(Time.zone)
+    e = self.end_time.in_time_zone(Time.zone)
+    self.end_time = DateTime.new(s.year, s.month, s.day, e.hour, e.min, e.sec, s.zone)
+  end
+  
   
   
 end

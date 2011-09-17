@@ -6,7 +6,7 @@
 <div class="event">
   <h3><%= event.title %></h3>
   
-  <%= event.site.name %>
+  <%= event.site.name unless event.site.nil? %>
   
   <div class="date">
   <%= event.fdate %> from <%= event.fstart %> to <%= event.fend %>
