@@ -5,7 +5,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.order('created_at desc').limit(15)
+    # @events = Event.order('created_at desc').limit(15)
+    @events = Event.by_site( current_user.sites )
 
     respond_to do |format|
       format.html # index.html.erb
