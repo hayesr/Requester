@@ -13,11 +13,11 @@
 
   <fieldset id="contact_info">
     <h3>How can we contact you?</h3>
-    <div class="field">
+    <div class="field" id="name">
       <%= f.label :requester, "Name" %><br />
       <%= f.text_field :requester %>
     </div>
-    <div class="field">
+    <div class="field" id="email">
       <%= f.label :requester_email, "Email" %><br />
       <%= f.text_field :requester_email %>
     </div>
@@ -25,44 +25,48 @@
   
   <fieldset id="event_info">
     <h3>What are the details for your event?</h3>
-    <div class="field">
-      <%= f.label :title, "Event Title" %><br />
+    <div class="field" id="event_desc">
+      <%= f.label :title, "Event Description / Title" %><br />
       <%= f.text_field :title %>
     </div>
-    <div class="field">
-      <% # find startoptions in events_helper %>
-      <%= f.label :start_time, "Date" %><br />
-      <%= f.date_select :start_time, startoptions %>
-    </div>
-    <div class="field">
-      <%= label_tag "Start time" %>
-      <%= configured_select_hour(Time.now, "start") %> :
-      <%= configured_select_minute(Time.now, "start") %>
-    </div>
     
-    <div class="field">
-      <%= label_tag "End time" %>
-      <%= f.date_select :end_time, :discard_year => true, :discard_month => true, :discard_day => true %>
-      <%= configured_select_hour(Time.now + 1.hour, "end") %> :
-      <%= configured_select_minute(Time.now, "end") %>
-    </div>
-
-    <div class="field">
+    <div class="field" id="event_site">
       <%= f.label :site_id %><br />
       <%= f.collection_select :site_id, Site.all, :id, :name %>
     </div>
+    
+    <div id="datetime_info">
+      <div class="field" id="date">
+        <% # find startoptions in events_helper %>
+        <%= f.label :start_time, "Date" %><br />
+        <%= f.date_select :start_time, startoptions %>
+      </div>
+      <div class="field" id="time_start">
+        <%= label_tag "Start time" %>
+        <%= configured_select_hour(Time.now, "start") %> :
+        <%= configured_select_minute(Time.now, "start") %>
+      </div>
+    
+      <div class="field" id="time_end">
+        <%= label_tag "End time" %>
+        <%= f.date_select :end_time, :discard_year => true, :discard_month => true, :discard_day => true %>
+        <%= configured_select_hour(Time.now + 1.hour, "end") %> :
+        <%= configured_select_minute(Time.now, "end") %>
+      </div>
+    </div>
+    
     <div class="field">
-      <%= f.label :area %><br>
+      <%= f.label :area, "Area(s)" %><br>
       <%= f.text_field :area %>
       <div class="desc">Separate areas with commas <em>eg. "MPR, Room 15, Playground"</em></div>
     </div>
     
     <div class="field">
       <%= label :need_ids, "Event Needs" %>
-  		<ul>
+  		<ul id="event_needs">
   			<% for need in Need.all %>
   			<li>
-  				<%= check_box_tag "event[need_ids][]", need.id, @event.needs.include?(need) %>
+  				<%= check_box_tag "event[need_ids][]", need.id, @event.needs.include?(need), :id => nil %>
   				<%= need.name %>
   			</li>
   			<% end %>
@@ -72,6 +76,6 @@
   </fieldset>
   
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit" %>
   </div>
 <% end %>

@@ -10,10 +10,11 @@
 @import "normal.css.scss";
 
 $base-color: #2b3033;
-$text-color: #444;
+$text-color: darken($base-color, 10%);
 @mixin box-shadow($args){
     -webkit-box-shadow: $args;
 }
+
 body{
     color: $text-color;
     font-family: "Helvetica", "Helvetica Neue", Arial, sans-serif;
@@ -34,17 +35,18 @@ fieldset{
 }
 
 #rh{
-    max-width: 479px;
+    max-width: 632px;
     margin: 0 auto;
 }
 
 #page{
     width: 90%;
     margin: 0 auto;
-    background-color: #fafdff;
-    
 }
 
+#content{
+    background-color: #fafdff;
+}
 
 
 @import "events.css.scss";

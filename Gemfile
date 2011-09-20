@@ -11,7 +11,6 @@ gem 'less'
 gem 'coffee-script'
 gem 'devise'
 gem 'cancan'
-gem 'chronic'
 
 group :development do
      gem 'interactive_editor'

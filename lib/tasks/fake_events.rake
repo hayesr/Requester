@@ -12,8 +12,8 @@ namespace :requester do
       start_time = Time.now + rand(100).days
       e = Event.create(
         :requester => r_name,
-        :requester_email => r_name + "@example.com",
-        :title => titles[rand(titles.count)],
+        :requester_email => r_name + "@" + titles[rand(titles.count)]+ ".com",
+        :title => titles[rand(titles.count)] + " " + titles[rand(titles.count)],
         :start_time => start_time,
         :end_time => start_time + rand(8).hours,
         :site => Site.find_by_abbr( abbrs[rand(abbrs.count)] ),
@@ -27,8 +27,17 @@ namespace :requester do
     
   end
   
+  task :filter_events => :environment do
+    Event.all.each do |event|
+      if event.title.nil? || event.site.nil? || event.requester.nil?
+        event.delete
+      end
+    end
+  end
+  
   task :clear_events => :environment do
     Event.delete_all
   end
+  
 end
 

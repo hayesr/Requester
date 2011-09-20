@@ -5,8 +5,7 @@ class Event < ActiveRecord::Base
   has_and_belongs_to_many :needs
   
   validates_presence_of :start_time, :end_time, :site
-  
-  
+    
   before_save :set_endtime_date_to_starttime_date
   
   # TODO attr_accessible protect state

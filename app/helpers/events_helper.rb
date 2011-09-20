@@ -34,6 +34,25 @@ module EventsHelper
     select_minute Time.now, :prefix => "event", :minute_step => 15, :field_name => "#{field_pre}_time(5i)"
   end
   
+  def listed_areas(event)
+    unless event.area.nil?
+      multi = event.area.split(',')
+    
+      if multi.length > 1
+        output = "<ul>"
+        multi.each do |a|
+          output << "<li>"
+          output << a.html_safe # => Does this filter like you think it does?
+          output << "</li>"
+        end
+        output << "</ul>"
+      else
+        output = event.area
+      end
+    
+      raw output
+    end
+  end
   
 end
 
