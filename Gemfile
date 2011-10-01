@@ -19,6 +19,7 @@ group :development do
      gem 'rb-fsevent'
      gem 'guard-livereload'
      gem 'foreman'
+     gem 'letter_opener'
 end
 
 group :test do

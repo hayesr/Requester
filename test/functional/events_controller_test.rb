@@ -24,7 +24,8 @@ class EventsControllerTest < ActionController::TestCase
       post :create, event: @event.attributes
     end
 
-    assert_redirected_to event_path(assigns(:event))
+    #assert_redirected_to confirm_event_path(assigns(:event))
+    assert_redirected_to '/thank_you.html'
   end
 
   test "should show event" do

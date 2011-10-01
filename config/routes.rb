@@ -1,7 +1,9 @@
 Requester::Application.routes.draw do
   devise_for :users
 
-  resources :events
+  resources :events do
+    get 'confirm', :on => :member
+  end
   match 'events/pending/:site' => 'events#pending', :as => 'pending_events', :via => :get
   match 'events/approved/:site' => 'events#approved', :as => 'approved_events', :via => :get
 

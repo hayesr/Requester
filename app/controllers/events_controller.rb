@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   
-  before_filter :authenticate_user!, :except => ['new', 'create']
+  before_filter :authenticate_user!, :except => ['new', 'create', 'confirm']
   
   # GET /events
   # GET /events.json
@@ -34,11 +34,23 @@ class EventsController < ApplicationController
       format.json { render json: @event }
     end
   end
+  
+  # GET /events/1/confirm
+  # GET /events/1/confirm.json
+  def confirm
+    @event = Event.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @event }
+    end
+  end
 
   # GET /events/new
   # GET /events/new.json
   def new
     @event = Event.new
+    @needs = Need.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,6 +60,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    @needs = Need.all
     @event = Event.find(params[:id])
   end
 
@@ -58,7 +71,9 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        EventMailer.confirmation_email(@event).deliver
+        
+        format.html { redirect_to '/thank_you.html', notice: 'Event was successfully created.' }
         format.json { render json: @event, status: :created, location: @event }
       else
         format.html { render action: "new" }
