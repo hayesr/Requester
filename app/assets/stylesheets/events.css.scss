@@ -23,7 +23,7 @@ form{
         br{ display: none;}
         input[type="text"]{
             font-size: 1.2em;
-            background-color: #eee;
+            background-color: #F5F7F8;
             width: 90%;
             max-width: 264px;
             display: block;
@@ -35,7 +35,6 @@ form{
             -webkit-appearance: none;
             -webkit-box-shadow: inset 0 1px 3px rgba(115,136,148,0.7);
             //background-image: -webkit-gradient(linear, 0% 0%, 0% 10%, from(transparentize($base-color, 0.8)), to(rgba(255,255,255,1)));
-
         }
         ul{
             padding: 0;

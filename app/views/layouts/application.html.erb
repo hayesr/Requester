@@ -21,13 +21,17 @@
     <div id="page">
       <% if user_signed_in? %>
       <p>Signed in as <%= current_user.email %> / <%= link_to "Sign out", destroy_user_session_path, :method => :delete %></p>
-      <% else %>
-      <p><%= link_to "Sign in", new_user_session_path %></p>
       <% end %>
     
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= yield %>
+      
+      <footer>
+        <% unless user_signed_in? %>
+        <p><%= link_to "Sign in", new_user_session_path %></p>
+        <% end %>
+      </footer>
     </div>
   </div>
 </body>
