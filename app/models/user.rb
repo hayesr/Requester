@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :subscriptions
   has_many :sites, :through => :subscriptions
+  has_many :assignments
+  has_many :needs, :through => :assignments
   
   has_and_belongs_to_many :roles
   
@@ -11,5 +13,9 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  
+  def assign(need)
+    self.needs << need 
+  end
   
 end

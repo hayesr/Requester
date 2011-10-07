@@ -14,4 +14,11 @@ class UserTest < ActiveSupport::TestCase
     @user.reload
     assert_equal @user.site_ids, new_site_ids
   end
+  
+  # test "User can be assigned needs" do
+  #   @user = users(:two)
+  #   @user.assign(needs(:air))
+  #   
+  #   assert @user.needs.include?(needs(:air))
+  # end
 end

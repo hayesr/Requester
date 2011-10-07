@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110920035736) do
+ActiveRecord::Schema.define(:version => 20111007032741) do
+
+  create_table "assignments", :force => true do |t|
+    t.integer  "need_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events", :force => true do |t|
     t.string   "requester"
