@@ -13,7 +13,7 @@ staff_one:
   roles: staff
 
 staff_two:
-  email: test2@example.com
+  email: test3@example.com
   roles: staff
   
 

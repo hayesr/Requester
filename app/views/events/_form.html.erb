@@ -66,8 +66,10 @@
   		<ul id="event_needs">
   			<% for need in @needs %>
   			<li>
-  				<%= check_box_tag "event[need_ids][]", need.id, @event.needs.include?(need), :id => nil %>
+  			  <label for="<%= need.name %>">
+  				<%= check_box_tag "event[need_ids][]", need.id, @event.needs.include?(need), :id => need.name %>
   				<%= need.name %>
+  				</label>
   			</li>
   			<% end %>
   		</ul>

@@ -19,7 +19,8 @@ group :development do
      gem 'rb-fsevent'
      gem 'guard-livereload'
      gem 'foreman'
-     gem 'letter_opener'
+     gem 'letter_opener', :git => 'https://github.com/ryanb/letter_opener.git'
+     gem 'ruby-debug19'
 end
 
 group :test do

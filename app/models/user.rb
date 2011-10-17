@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
     self.needs << need 
   end
   
+  def subscribe(site)
+    self.sites << site
+  end
+  
 end

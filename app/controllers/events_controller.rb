@@ -72,6 +72,12 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         EventMailer.confirmation_email(@event).deliver
+        if @event.site.users.any?
+          EventMailer.approval_notice(@event).deliver
+        end
+        if @event.needs.any?
+          EventMailer.staff_notice(@event).deliver
+        end
         
         format.html { redirect_to '/thank_you.html', notice: 'Event was successfully created.' }
         format.json { render json: @event, status: :created, location: @event }

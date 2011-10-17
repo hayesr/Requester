@@ -5,7 +5,7 @@ class EventsControllerTest < ActionController::TestCase
   
   setup do
     @event = events(:future_approved)
-    sign_in users(:one)
+    sign_in users(:admin)
   end
 
   test "should get index" do
