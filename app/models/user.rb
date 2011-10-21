@@ -1,11 +1,9 @@
 class User < ActiveRecord::Base
   has_many :subscriptions
   has_many :sites, :through => :subscriptions
-  accepts_nested_attributes_for :sites
   
   has_many :assignments
   has_many :needs, :through => :assignments
-  accepts_nested_attributes_for :needs
   
   has_and_belongs_to_many :roles
   
