@@ -1,5 +1,6 @@
 Requester::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :path_prefix => 'auth'
+  resources :users
 
   resources :events do
     get 'confirm', :on => :member
