@@ -1,0 +1,56 @@
+<%= form_for @user do |user_form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <fieldset id="user_info">
+    <div class="field">
+      <%= user_form.label :email %>
+      <%= user_form.text_field :email %>
+    </div>
+  
+    <div class="field">
+      <%= user_form.label :password %>
+      <%= user_form.password_field :password %>
+    </div>
+  
+    <div class="field">
+      <%= user_form.label :password_confirmation %>
+      <%= user_form.password_field :password_confirmation %>
+    </div>
+  </fieldset>
+  
+  <fieldset id="subscriptions">
+    <h4>Subscriptions</h4>
+    <p>Subscribe this user to school sites and they'll be notified when a request has been submitted to use that site.</p>
+    
+    <ul>
+      <% @sites.each do |site| %>
+      <li><%= site.name %></li>
+      <% end %>
+    </ul>
+  </fieldset>
+  
+  <fieldset id="assignments">
+    <h4>Assignments</h4>
+    <p>Assign this user to a need and they'll be notified when a request specified that need. </p>
+    
+    <ul>
+    <% @needs.each do |need| %>
+      <li><%= need.name %></li>
+    <% end %>
+    </ul>
+  </fieldset>
+  
+  <div class="actions">
+    <%= user_form.submit "Submit" %>
+  </div>
+<% end %>
