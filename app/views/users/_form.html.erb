@@ -34,7 +34,10 @@
     
     <ul>
       <% @sites.each do |site| %>
-      <li><%= site.name %></li>
+      <li>
+        <%= check_box_tag :site_ids, site.id, @user.sites.include?(site), :name => 'user[site_ids][]' %>
+        <%= label_tag :site_ids, site.name %>
+      </li>
       <% end %>
     </ul>
   </fieldset>
@@ -45,7 +48,10 @@
     
     <ul>
     <% @needs.each do |need| %>
-      <li><%= need.name %></li>
+      <li>
+      <%= check_box_tag :need_ids, need.id, @user.needs.include?(need), :name => 'user[need_ids][]' %>
+      <%= label_tag :need_ids, need.name -%>
+      </li>
     <% end %>
     </ul>
   </fieldset>

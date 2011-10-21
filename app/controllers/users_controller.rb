@@ -26,8 +26,10 @@ class UsersController < ApplicationController
       params[:user].delete(:password_confirmation)
     end
     
+    attribs = {'site_ids' => [], 'need_ids' => []}.merge(params[:user] || {})
+    
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(attribs)
       redirect_to users_path, :notice => "User updated."
     else
       render :action => 'edit'
