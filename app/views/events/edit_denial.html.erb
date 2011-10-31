@@ -1,0 +1,15 @@
+<div id="content">
+  <%= form_for @event, :url => deny_event_path, :method => :put do |f| %>
+  
+  <fieldset id="event_denial">
+    <p><%= f.label :denial_message_text, "Denial Message"%></p>
+    <div><%= f.text_area :denial_message_text %></div>
+  </fieldset>
+  
+  <div class="actions">
+    <%= link_to 'Cancel', events_path %>
+    <%= f.submit "Submit" %>
+  </div>
+  
+  <% end %>
+</div>

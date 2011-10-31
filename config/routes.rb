@@ -6,6 +6,7 @@ Requester::Application.routes.draw do
     member do
       get 'confirm'
       put 'approve'
+      get 'edit_denial', :as => 'edit_denial_for'
       put 'deny'
     end
   end

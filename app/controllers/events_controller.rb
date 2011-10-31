@@ -119,20 +119,28 @@ class EventsController < ApplicationController
   def approve
     @event = Event.find(params[:id])
     if @event.approve
-      redirect_to events_path, notice: 'Event approved.'
       # => send email
+      redirect_to events_path, notice: 'Event approved.'
     else
       render action: "index", notice: 'There was a problem approving that event.'
     end
   end
   
+  def edit_denial
+    @event = Event.find(params[:id])
+  end
+  
   def deny
     @event = Event.find(params[:id])
-    if @event.approve
-      redirect_to events_path, notice: 'Event denied.'
-      # => send email
+    if @event.update_attributes(params[:event])
+      if @event.deny
+        # => send email
+        redirect_to events_path, notice: 'Event denied.'
+      else
+        render action: "edit_denial"
+      end
     else
-      render action: "index", notice: 'There was a problem denying that event.'
+      render action: "edit_denial"
     end
   end
 end
