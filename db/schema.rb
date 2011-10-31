@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111007032741) do
+ActiveRecord::Schema.define(:version => 20111026161051) do
+
+  create_table "active_admin_comments", :force => true do |t|
+    t.integer  "resource_id",   :null => false
+    t.string   "resource_type", :null => false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "namespace"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
   create_table "assignments", :force => true do |t|
     t.integer  "need_id"
@@ -31,11 +46,21 @@ ActiveRecord::Schema.define(:version => 20111007032741) do
     t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "denial_message_id"
+    t.text     "note"
   end
 
   create_table "events_needs", :id => false, :force => true do |t|
     t.integer "event_id"
     t.integer "need_id"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.text     "body"
+    t.integer  "messageable_id"
+    t.string   "messageable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "needs", :force => true do |t|

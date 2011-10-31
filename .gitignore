@@ -4,3 +4,4 @@ log/*.log
 tmp/
 .sass-cache/
 ._*
+.DS_Store

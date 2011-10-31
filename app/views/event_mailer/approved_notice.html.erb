@@ -1,0 +1,20 @@
+
+<h2>Your request to use SUSD facilities has been received.</h2>
+
+<p>You submitted the following information:</p>
+
+<div>
+  <p><strong>Your name: </strong> <%= @event.requester %></p>
+  <p><strong>Your email: </strong> <%= @event.requester_email %></p>
+</div>
+
+<div>
+  <p><strong>Name of the event: </strong> <%= @event.title %></p>
+  <p><strong>School: </strong> <%= @event.site.name %></p>
+  <p><strong>School area: </strong><%= @event.area %></p>
+  
+  <p><strong>Date: </strong> <%= @event.fdate %></p>
+  <p><strong>Start time: </strong> <%= @event.fstart %></p>
+  <p><strong>End time: </strong> <%= @event.fend %></p>
+  
+</div>

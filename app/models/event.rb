@@ -2,6 +2,9 @@ class Event < ActiveRecord::Base
   belongs_to :site
   has_and_belongs_to_many :needs
   
+  has_many :messages, :as => :messageable
+  belongs_to :denial_message, :class_name => 'Message', :foreign_key => 'denial_message_id'
+  
   validates_presence_of :start_time, :end_time, :site
     
   before_save :set_endtime_date_to_starttime_date
@@ -12,11 +15,11 @@ class Event < ActiveRecord::Base
   
   state_machine :state, :initial => :pending do
     event :approve do
-      transition [:pending, :denied] => :approved
+      transition all => :approved
     end
     
     event :deny do
-      transition [:pending, :approved] => :denied
+      transition all => :denied
     end
   end
   

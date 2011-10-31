@@ -115,4 +115,24 @@ class EventsController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  def approve
+    @event = Event.find(params[:id])
+    if @event.approve
+      redirect_to events_path, notice: 'Event approved.'
+      # => send email
+    else
+      render action: "index", notice: 'There was a problem approving that event.'
+    end
+  end
+  
+  def deny
+    @event = Event.find(params[:id])
+    if @event.approve
+      redirect_to events_path, notice: 'Event denied.'
+      # => send email
+    else
+      render action: "index", notice: 'There was a problem denying that event.'
+    end
+  end
 end

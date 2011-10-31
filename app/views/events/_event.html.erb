@@ -1,0 +1,35 @@
+
+<div class="event">
+  <h2><%= event.title %></h2>
+
+  <h4><%= event.site.name unless event.site.nil? %></h4>
+
+  <div class="time-info">
+    <span class="date"><%= event.fdate %></span> <br>
+    <span class="start"><%= event.fstart %></span>
+    <span class="separator">&ndash;</span>
+    <span class="end"><%= event.fend %></span>
+  </div>
+
+  <% unless event.requester.nil? %>
+  <div class="requester">
+    <em>requested by</em> <%= link_to event.requester, "mailto:#{event.requester_email}" %>
+  </div>
+  <% end %>
+
+  <% unless event.area.nil? %>
+  <div class="areas">
+    
+    <strong><%= pluralize( event.area.split(',').length, 'area' ) %>: </strong>
+    <%# listed_areas(event) %>
+    <%= event.area %>
+  </div>
+  <% end %>
+  
+  <ul>
+    <li><%= link_to 'Show', event %></li>
+    <li><%= link_to 'Edit', edit_event_path(event) %></li>
+    <li><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></li>
+    <li>Currently <%= event.state %>, Approve / Deny </li>
+  </ul>
+</div>

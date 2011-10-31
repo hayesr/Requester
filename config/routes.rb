@@ -3,10 +3,17 @@ Requester::Application.routes.draw do
   resources :users
 
   resources :events do
-    get 'confirm', :on => :member
+    member do
+      get 'confirm'
+      put 'approve'
+      put 'deny'
+    end
   end
+  
   match 'events/pending/:site' => 'events#pending', :as => 'pending_events', :via => :get
   match 'events/approved/:site' => 'events#approved', :as => 'approved_events', :via => :get
+  
+  resources :messages
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

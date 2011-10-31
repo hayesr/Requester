@@ -22,4 +22,14 @@ class EventMailer < ActionMailer::Base
     mail(:to => addrs, :subject => "A new facilities request requires your attention")
   end
   
+  def approved_notice(event)
+    @event = event
+    mail(:to => event.requester_email, :subject => "Your request has been approved.")
+  end
+  
+  def denied_notice(event)
+    @event = event
+    mail(:to => event.requester_email, :subject => "Your request has been denied.")
+  end
+  
 end
