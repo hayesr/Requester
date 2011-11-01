@@ -2,5 +2,8 @@
 <h2>We were unable to approve your request to use our facilities.</h2>
 
 <p>The reasons were:</p>
+<div id="reason">
+  <%= simple_format(@event.denial_message_text) %>
+</div>
 
 <p>Your options are:</p>
