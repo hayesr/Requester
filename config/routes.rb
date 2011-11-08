@@ -1,7 +1,11 @@
 Requester::Application.routes.draw do
   devise_for :users, :path_prefix => 'auth'
   resources :users
-
+  
+  match 'events/pending(/:site)' => 'events#pending', :as => 'pending_events', :via => :get
+  match 'events/approved(/:site)' => 'events#approved', :as => 'approved_events', :via => :get
+  match 'events/denied(/:site)' => 'events#denied', :as => 'denied_events', :via => :get
+  
   resources :events do
     member do
       get 'confirm'
@@ -11,10 +15,6 @@ Requester::Application.routes.draw do
     end
   end
   
-  match 'events/pending/:site' => 'events#pending', :as => 'pending_events', :via => :get
-  match 'events/approved/:site' => 'events#approved', :as => 'approved_events', :via => :get
-  
-  resources :messages
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

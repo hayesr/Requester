@@ -22,7 +22,7 @@ class Event < ActiveRecord::Base
   
   # scope by site, accepts int or array
   def self.by_site(site)
-    where(:site_id => site)
+    where(:site_id => site).order('site_id')
   end
   
   def self.pending
@@ -31,6 +31,10 @@ class Event < ActiveRecord::Base
   
   def self.approved
     where(:state => 'approved')
+  end
+  
+  def self.denied
+    where(:state => 'denied')
   end
   
   def fdate

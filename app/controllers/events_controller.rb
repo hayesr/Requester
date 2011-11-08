@@ -15,13 +15,15 @@ class EventsController < ApplicationController
   end
   
   def pending
-    @site = Site.where(:abbr => params[:site]).first
-    @events = Event.by_site(@site).pending
+    @events = Event.by_site( current_user.sites ).pending
   end
   
   def approved
-    @site = Site.where(:abbr => params[:site]).first
-    @events = Event.by_site(@site).approved
+    @events = Event.by_site( current_user.sites ).approved
+  end
+  
+  def denied
+    @events = Event.by_site( current_user.sites ).denied
   end
 
   # GET /events/1
