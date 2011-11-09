@@ -26,6 +26,9 @@
       <%= user_form.label :password_confirmation %>
       <%= user_form.password_field :password_confirmation %>
     </div>
+    <% if @user == current_user %>
+    <p class="warning"><em>If you change your password you will be signed-out, and you'll have to sign in with the new password.</em></p>
+    <% end %>
   </fieldset>
   
   <fieldset id="subscriptions">
