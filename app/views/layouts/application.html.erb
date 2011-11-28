@@ -18,17 +18,18 @@
 
 <body>
   <div id="rh">
-    
+    <% if user_signed_in? %>
     <header class="group">
       <h1>SUSD Event Requests</h1>
-      <% if user_signed_in? %>
+      
       <div id="account">Signed in as <%= link_to current_user.email, edit_user_path(current_user) %> / <%= link_to "Sign out", destroy_user_session_path, :method => :delete %></div>
-      <% end %>
+      
     </header>
+    <% end %>
     
     <div id="page">
       
-      <% unless notice.nil? || alert.nil? %>
+      <% unless notice.nil? && alert.nil? %>
       <div id="messages">
         <% unless notice.nil? %>
         <div class="notice">
@@ -42,6 +43,7 @@
         <% end %>
       </div>
       <% end %>
+      
       
       <%= yield %>
       

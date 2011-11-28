@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :site_ids, :need_ids
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :site_ids, :need_ids, :role_ids
   
   def assign(need)
     self.needs << need 
@@ -21,6 +21,22 @@ class User < ActiveRecord::Base
   
   def subscribe(site)
     self.sites << site
+  end
+  
+  def admin?
+    member_of_role?("Admin")
+  end
+  
+  def site_approver?
+    member_of_role?("Site Approver")
+  end
+  
+  def staff?
+    member_of_role?("Staff")
+  end
+  
+  def member_of_role?(role)
+    roles.collect(&:name).include?(role)
   end
   
 end

@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @sites = Site.all
     @needs = Need.all
+    @roles = Role.all
   end
   
   def update
@@ -26,7 +27,11 @@ class UsersController < ApplicationController
       params[:user].delete(:password_confirmation)
     end
     
-    attribs = {'site_ids' => [], 'need_ids' => []}.merge(params[:user] || {})
+    if current_user.admin?
+      attribs = {'site_ids' => [], 'need_ids' => [], 'role_ids' => []}.merge(params[:user] || {})
+    else
+      attribs = params[:user]
+    end
     
     @user = User.find(params[:id])
     if @user.update_attributes(attribs)

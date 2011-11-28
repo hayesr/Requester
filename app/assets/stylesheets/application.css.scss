@@ -11,9 +11,32 @@
 
 $base-color: #ebf0f2;
 $text-color: #233037;
+$blue-link: #3da3e0;
+$green-link: #e0fdcd;
+$link: $green-link;
 $back-color: #2b3033;
+
 @mixin box-shadow($args){
     -webkit-box-shadow: $args;
+}
+
+@mixin round-bottom($rad){
+    -webkit-border-bottom-left-radius:$rad;
+	-webkit-border-bottom-right-radius:$rad;
+	-moz-border-radius-bottomleft:$rad;
+	-moz-border-radius-bottomright:$rad;
+	border-bottom-left-radius:$rad;
+	border-bottom-right-radius:$rad;
+}
+
+@mixin clearfix{
+    &:after{
+        content: ".";
+    	display: block;
+    	height: 0;
+    	clear: both;
+    	visibility: hidden;
+    }
 }
 
 body{
@@ -21,16 +44,21 @@ body{
     font-family: "Helvetica", "Helvetica Neue", Arial, sans-serif;
     background: $back-color url('background.jpg') no-repeat center top;
 }
+@mixin links($color){
+    a, a:link, a:visited{
+        color:$color;
+        text-decoration: none;
+        border-bottom: 1px solid fade-out($color, 0.6);
+    }
 
-a, a:link, a:visited{
-    color:#e0fdcd;
-    text-decoration: none;
-    border-bottom: 1px solid fade-out(#e0fdcd, 0.6);
+    a:hover{
+        color: lighten($color,10%);
+        border-bottom: 1px solid fade-out($color, 0.1);
+    }
+    
 }
 
-a:hover{
-    border-bottom: 1px solid fade-out(#e0fdcd, 0.1);
-}
+@include links($green-link);
 
 form h3{
     font-size: 1.2em;
@@ -82,10 +110,13 @@ $alert:#B5363C;
 header{
     width: 90%;
     margin: 1em auto;
-    color:#fff;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.8);
+    padding: 0 0 1em 0;
+    color: #fff;
+    
+
     h1{
         font-size: 1em;
+        font-weight: normal;
         float: left;
         margin: 0 1em 0 0;
     }
@@ -100,11 +131,20 @@ header{
 }
 
 #title{
+    margin-bottom: 1em;
+    
+    @include clearfix;
 	h1{
+	    color: #fff;
 		font-size: 1.2em;
-		color: #fff;
 		font-weight: normal;
+		line-height: 1;
+		float:left;
 		text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+	}
+	.actions{
+	    float:right;
+	    padding: 0.625em 0 0 0;
 	}
 }
 
@@ -120,6 +160,8 @@ div.border{
 	margin-bottom: 2em;
 	padding: 2em;
 	@include box-shadow(0 3px 4px rgba(0,0,0,0.4));
+	
+	@include links($blue-link);
 }
 
 
