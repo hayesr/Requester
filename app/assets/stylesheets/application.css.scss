@@ -9,8 +9,9 @@
 
 @import "normal.css.scss";
 
-$base-color: #EEF0F0;
-$text-color: #262626;
+$base-color: #ebf0f2;
+$text-color: #233037;
+$back-color: #2b3033;
 @mixin box-shadow($args){
     -webkit-box-shadow: $args;
 }
@@ -18,6 +19,17 @@ $text-color: #262626;
 body{
     color: $text-color;
     font-family: "Helvetica", "Helvetica Neue", Arial, sans-serif;
+    background: $back-color url('background.jpg') no-repeat center top;
+}
+
+a, a:link, a:visited{
+    color:#e0fdcd;
+    text-decoration: none;
+    border-bottom: 1px solid fade-out(#e0fdcd, 0.6);
+}
+
+a:hover{
+    border-bottom: 1px solid fade-out(#e0fdcd, 0.1);
 }
 
 form h3{
@@ -31,9 +43,55 @@ fieldset{
     //padding: 1em 0.4em 1em 0;
 }
 
+#messages{
+    > div{
+        margin-bottom: 1em;
+    }
+}
+
+$notice:#9AC736;
+.notice{
+    padding: 1em;
+    background-color: fade-out($notice, 0.1);
+    border: 1px solid darken($notice, 20%);
+    color: darken($notice, 50%);
+}
+
+$alert:#B5363C;
+
+.alert{
+    padding: 1em;
+    background-color: fade-out($alert, 0.1);
+    border: 1px solid darken($alert, 20%);
+    color: darken($alert, 50%);
+}
+
+.group:after{
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
 #rh{
     max-width: 632px;
     margin: 0 auto;
+}
+
+header{
+    width: 90%;
+    margin: 1em auto;
+    color:#fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.8);
+    h1{
+        font-size: 1em;
+        float: left;
+        margin: 0 1em 0 0;
+    }
+    #account{
+        float: right;
+    }
 }
 
 #page{
@@ -44,7 +102,17 @@ fieldset{
 #title{
 	h1{
 		font-size: 1.2em;
+		color: #fff;
+		font-weight: normal;
+		text-shadow: 0 1px 1px rgba(0,0,0,0.5);
 	}
+}
+
+div.border{
+   height: 1px; 
+   background-color:#fff;
+   border-top: 28px solid #e6eff5;
+   border-bottom: 1px solid fade-out(#2d4655, 0.8);
 }
 
 #content{
@@ -65,7 +133,7 @@ fieldset{
 
 @media only screen and (min-width: 480px) {
   /* Style adjustments for viewports 480px and over go here */
-  body{ background-color: $base-color; }
+  body{  }
   @import "480/*";
 }
 

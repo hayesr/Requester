@@ -21,7 +21,7 @@ form{
             //background-color: transparentize(#ff0, 0.5);
         }
         br{ display: none;}
-        input[type="text"], input[type="password"]{
+        .field.text > input, input[type="text"], input[type="password"], input[type="email"]{
             font-size: 1.2em;
             background-color: #F5F7F8;
             width: 90%;
