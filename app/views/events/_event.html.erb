@@ -1,17 +1,26 @@
 
-<div class="event">
-  <h2><%= event.title %></h2>
-
-  <h4><%= event.site.name unless event.site.nil? %></h4>
-
-  <div class="time-info">
-    <span class="date"><%= event.fdate %></span> <br>
-    <span class="start"><%= event.fstart %></span>
-    <span class="separator">&ndash;</span>
-    <span class="end"><%= event.fend %></span>
+<div class="event group">
+  
+  <div class="event_title group">
+    <div class="draw_toggle">
+      <a href="#">Toggle</a>
+    </div>
+    <hgroup>
+      <h2><%= event.title %></h2>
+      <h4><%= event.site.name unless event.site.nil? %></h4>
+    </hgroup>
+    <div class="date_time">
+      <h5 class="date"><%= event.fdate %></h5>
+      <p class="times"> 
+      <span class="start"><%= event.fstart %></span>
+      <span class="separator">&ndash;</span>
+      <span class="end"><%= event.fend %></span>
+      </p>
+    </div>
+    <div class="state<%= " #{event.state}"%>"><%= event.state.capitalize %></div>
   </div>
   
-  <p class="state"><%= event.state.capitalize %></p>
+  
 
   <div class="event_drawer">
     <% unless event.area.nil? %>

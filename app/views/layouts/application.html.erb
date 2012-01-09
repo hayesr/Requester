@@ -24,6 +24,16 @@
       
       <div id="account">Signed in as <%= link_to current_user.email, edit_user_path(current_user) %> / <%= link_to "Sign out", destroy_user_session_path, :method => :delete %></div>
       
+      <nav class="group">
+        <ul class="horz menu">
+          <li><%= link_to "New Event", new_event_path %></li>
+          <li><%= link_to "Manage Events", events_path %></li>
+          <% if current_user.is_admin? %>
+          <li><%= link_to "Manage Users", users_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+      
     </header>
     <% end %>
     
@@ -48,10 +58,11 @@
       <%= yield %>
       
       <footer>
-        <% unless user_signed_in? %>
+        <% unless user_signed_in? || current_page?(new_user_session_path) %>
         <p><%= link_to "Sign in", new_user_session_path %></p>
         <% end %>
       </footer>
+      
     </div>
   </div>
 </body>

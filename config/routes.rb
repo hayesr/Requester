@@ -1,5 +1,7 @@
 Requester::Application.routes.draw do
-  devise_for :users, :path_prefix => 'auth'
+  devise_for :users, :path_prefix => 'auth' do
+    root :to => "events#index"
+  end
   resources :users
   
   match 'events/pending(/:site)' => 'events#pending', :as => 'pending_events', :via => :get

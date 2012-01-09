@@ -54,6 +54,14 @@ module EventsHelper
     end
   end
   
+  def is_active?(action)
+    "active" if current_page?(:action => action)
+  end
+  
+  def active_page?(opts)
+    "active" if current_page?(opts)
+  end
+  
 end
 
 module ActionView

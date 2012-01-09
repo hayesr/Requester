@@ -23,15 +23,15 @@ class User < ActiveRecord::Base
     self.sites << site
   end
   
-  def admin?
+  def is_admin?
     member_of_role?("Admin")
   end
   
-  def site_approver?
+  def is_site_approver?
     member_of_role?("Site Approver")
   end
   
-  def staff?
+  def is_staff?
     member_of_role?("Staff")
   end
   

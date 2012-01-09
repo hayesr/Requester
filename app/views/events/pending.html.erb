@@ -1,10 +1,11 @@
-<h1>Pending Events</h1>
-
-<p><%= link_to 'New Event', new_event_path %></p>
+<div id="title">
+  <h1>Pending Events</h1>
+  <%= render :partial => 'state_nav' %>
+</div>
 
 <div id="content">
   
-  <p><em>Showing events for <%= current_user.sites.collect(&:name).join(', ') %></em></p>
+  <p><em>Showing pending events for <%= current_user.sites.collect(&:name).join(', ') %></em></p>
 
   <div id="events">
     <%= render @events %>

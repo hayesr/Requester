@@ -1,12 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.3'
+gem 'rails', '~> 3.2.0.rc2'
 
 gem 'sqlite3'
 gem 'capistrano'
 gem 'state_machine'
 gem 'jquery-rails'
-gem 'sass-rails'
+gem 'sass-rails', '~> 3.2.3'
 gem 'less'
 gem 'coffee-script'
 gem 'devise'

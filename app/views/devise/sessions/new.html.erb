@@ -24,8 +24,9 @@
 
     <div class="actions">
       <%= f.submit "Sign in" %>
+      <p><%= link_to "Cancel", new_event_path  %></p>
     </div>
   <% end %>
 
-  <%= render :partial => "devise/shared/links" %>
+  <% # render :partial => "devise/shared/links" %>
 </div>

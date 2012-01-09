@@ -1,10 +1,9 @@
 <div id="title">
   <h1>All Events</h1>
-  <div class="actions"><%= link_to 'New Event', new_event_path %></div>
+  <%= render :partial => 'state_nav' %>
 </div>
 
-<div id="content">
+
   <div id="events">
     <%= render @events %>
   </div>
-</div>
