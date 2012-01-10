@@ -1,54 +1,53 @@
 
 <div class="event group">
-  
-  <div class="event_title group">
-    <div class="draw_toggle">
-      <a href="#">Toggle</a>
+  <a href="#" class="drawer_toggle">
+    <div class="event_title group">
+      <div class="twirl"></div>
+      <hgroup>
+        <h2><%= event.title.titlecase %></h2>
+        <h4><%= event.site.name.titlecase unless event.site.nil? %></h4>
+      </hgroup>
+      <div class="date_time">
+        <h5 class="date"><%= event.start_time.strftime("%b %e") unless event.start_time.nil? %></h5>
+        <p class="times"> 
+        <span class="start"><%= event.start_time.strftime("%l:%M%p").downcase.chop %></span>
+        <span class="separator">&ndash;</span>
+        <span class="end"><%= event.end_time.strftime("%l:%M%p").downcase.chop %></span>
+        </p>
+      </div>
+      <div class="state<%= " #{event.state}"%>"><span><%= event.state.capitalize %></span></div>
     </div>
-    <hgroup>
-      <h2><%= event.title %></h2>
-      <h4><%= event.site.name unless event.site.nil? %></h4>
-    </hgroup>
-    <div class="date_time">
-      <h5 class="date"><%= event.fdate %></h5>
-      <p class="times"> 
-      <span class="start"><%= event.fstart %></span>
-      <span class="separator">&ndash;</span>
-      <span class="end"><%= event.fend %></span>
-      </p>
-    </div>
-    <div class="state<%= " #{event.state}"%>"><%= event.state.capitalize %></div>
-  </div>
-  
+  </a>
   
 
   <div class="event_drawer">
-    <% unless event.area.nil? %>
-    <div class="areas">
-      <strong><%= event.area.split(',').count > 1 ? "Areas" : "Area" %></strong>
-      <%= event.area %>
-    </div>
-    <% end %>
+    <div class="drawer_top">
+      <% unless event.area.nil? %>
+      <div class="areas">
+        <strong><%= event.area.split(',').count > 1 ? "Areas" : "Area" %></strong>
+        <%= event.area %>
+      </div>
+      <% end %>
     
-    <div class="needs">
-      <strong>Needs</strong>
-      <% if event.needs.any? %>
-        <%= event.needs.collect(&:name).join(', ') %>
-      <% else %>
-        No needs requested.
+      <div class="needs">
+        <strong>Needs</strong>
+        <% if event.needs.any? %>
+          <%= event.needs.collect(&:name).join(', ') %>
+        <% else %>
+          No needs requested.
+        <% end %>
+      </div>
+    
+      <% unless event.note.nil? %>
+      <div class="notes">
+        <strong>Notes</strong>
+        <div class="body">
+          <%= simple_format(event.note)%>
+        </div>
+      </div>
       <% end %>
     </div>
-    
-    <% unless event.note.nil? %>
-    <div class="notes">
-      <strong>Notes</strong>
-      <div class="body">
-        <%= simple_format(event.note)%>
-      </div>
-    </div>
-    <% end %>
-    
-    <div class="event_bottom">
+    <div class="drawer_bottom">
       
       <% unless event.requester.nil? %>
       <div class="requester">
@@ -58,10 +57,10 @@
       <div class="edit_event">
         <%= link_to 'Edit', edit_event_path(event) %>
       </div>
-      <div class="deny_event">
+      <div class="deny_event button">
         <%= link_to 'Deny', edit_denial_for_event_path(event) %>
       </div>
-      <div class="approve_event">
+      <div class="approve_event button">
         <%= link_to 'Approve', approve_event_path(event), :method => :put %>
       </div>
       

@@ -49,7 +49,7 @@ class Event < ActiveRecord::Base
     end_time.strftime("%l:%M %p") unless end_time.nil?
   end
   
-  protected
+  private
   
   def set_endtime_date_to_starttime_date
     s = self.start_time.in_time_zone(Time.zone)

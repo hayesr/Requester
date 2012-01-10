@@ -2,37 +2,123 @@
     .event{
         padding: 0 0 1em 0;
         margin-bottom: 1em;
-        border-top: 1px solid #ddd;
-        border-bottom: 1px solid #aaa;
-        background-color: #a8c0ce;
+        background-color: #9eb8c7;
         .event_title{
             background-color: #fff;
             position: relative;
             min-height: 120px;
+            overflow: hidden;
+            .twirl{
+                display: block;
+                background: #fff url('twirl-up.png') no-repeat center center;
+                float:left;
+                width: 90px;
+                height: 120px;
+                &.down{
+                    background-image: url('twirl-down.png');
+                }
+            }
             hgroup{
                 float: left;
-                //border: 1px solid #f0f;
+                //height: 120px;
+                padding-top: 36px;
+                max-width: 310px;
                 h2,h4{
                     font-weight:normal;
                     margin: 0;
+                }
+                h2{
+                    color: $text-color;
+                    font-size: 21px;
+                }
+                h4{
+                    font-size: 16px;
+                    color: #95afbd;
                 }
             }
             .date_time{
                 position: absolute;
                 right: 28px;
-                border: 1px solid #0ff;
+                background-color: #fff;
+                border-left: 1px solid #e4ebf0;
+                height: 120 - 36px;
+                width: 119px;
+                padding: 36px 0 0 21px;
+                h5.date{
+                    color: $text-color;
+                    font-size: 21px;
+                    margin: 0;
+                }
+                .times{
+                    margin:0;
+                    color: #95afbd;
+                }
             }
             .state{
                 position: absolute;
                 right: 0;
-                width: 27px;
+                top: 0;
+                width: 26px;
                 overflow:hidden;
-                border: 1px solid #ff0;
+                height: 121px;
+                span{
+                    display:none;
+                }
+                &.pending{
+                    background: #dbdbdb url('pending.png') no-repeat 8px 30px;
+                    border-right:1px solid #ccc;
+                }
+                &.approved{
+                    background: #9fdc76 url('approved.png') no-repeat 8px 25px;
+                    border-right: 1px solid #7eb559;
+                }
+                &.denied{
+                    background: #de6666 url('denied.png') no-repeat 8px 35px;
+                    border-right: 1px solid #9b3535;
+                }
             }
         }
         .event_drawer{
-            display:none;
+            .drawer_top{
+                background: url('drawer-top-back.png') repeat-x left top;
+                min-height: 12em;
+                > div{
+                    padding: 1em 26px;
+                }
+                .areas{
+                    padding-top: 2em;
+                }
+                .needs{
+                    border: 1px solid #d8e6f0;
+                    border-right: none;
+                    border-left: none;
+                    background-color: #f5f8fa;
+                }
+                .notes{
+                }
+            }
+            .drawer_bottom{
+                background: #9eb8c7 url('drawer-bottom-back.png') repeat-x left top;
+                padding: 36px 28px;
+                min-height: 100 - 36px;
+                > div{
+                    float:left;
+                }
+                .requester{
+                    padding: 9px 36px 0 0;
+                    background: url('email_32.png') no-repeat right top;
+                    a{
+                        border: none;
+                    }
+                }
+            }
         }
+    }
+}
+
+.js{
+    .event_drawer{
+        display:none;
     }
 }
 
@@ -93,12 +179,12 @@ form{
     }
     #event_site_id{
         //padding: 0.6em;
-        //        width: 100%;
-        //        min-width: 250px;
-        //        max-width: 264px;
-        //        color: #324959;
-        //        border: 1px solid #324959;
-        //        -webkit-appearance: none;
+        //width: 100%;
+        //min-width: 250px;
+        //max-width: 264px;
+        //color: #324959;
+        //border: 1px solid #324959;
+        //-webkit-appearance: none;
     }
     #datetime_info{
         clear:both;
