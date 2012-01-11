@@ -118,22 +118,27 @@
                         text-transform: uppercase;
                         color: #e6f3fb;
                         font-weight: bold;
-                        border: none;
+                        border-bottom: none;
                         text-shadow:0 1px 1px fade-out(#2b3033, 0.3);
+                        &:hover{
+                            color: #fff;
+                            background-color: fade-out($back-color, 0.7);
+                            border-radius: 4px;
+                        }
                     }
                 }
                 .requester{
                     a{
-                        padding: 9px 38px 2px 0;
-                        margin-right: 42px;
+                        padding: 10px 45px 10px 10px;
+                        margin-right: 1em;
                         max-width: 140px;
-                        background: url('email_32.png') no-repeat right top;
+                        background: url('email_32.png') no-repeat 90% top;
                     }
                 }
                 .edit_event{
                     a{
-                        padding: 9px 36px 2px 0;
-                        background: url('pencil_32.png') no-repeat right top;
+                        padding: 10px 40px 10px 10px;
+                        background: url('pencil_32.png') no-repeat 89% 1px;
                     }
                 }
                 .event_state_actions{

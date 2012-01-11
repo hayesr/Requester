@@ -6,6 +6,7 @@ $(document).ready(function(){
        // $(this).parent(".event").find(".event_drawer").slideToggle();
        // $(this).parent(".event").find(".twirl").toggleClass("down");
        openDrawer($(this));
+       return false;
    });
    //$(".event:first .event_drawer").slideToggle();
    //openDrawer($(".event:first a.drawer_toggle"));

@@ -3,12 +3,7 @@
   <%= render :partial => 'state_nav' %>
 </div>
 
-<div id="content">
-  
-  <p><em>Showing pending events for <%= current_user.sites.collect(&:name).join(', ') %></em></p>
-
-  <div id="events">
-    <%= render @events %>
-  </div>
-  
+<div id="events">
+  <%= render @events %>
 </div>
+

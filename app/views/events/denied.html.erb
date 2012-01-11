@@ -2,13 +2,7 @@
   <h1>Denied Events</h1>
   <%= render :partial => 'state_nav' %>
 </div>
-
-<div id="content">
   
-  <p><em>Showing denied events for <%= current_user.sites.collect(&:name).join(', ') %></em></p>
-  
-  <div id="events">
-    <%= render @events %>
-  </div>
-  
+<div id="events">
+  <%= render @events %>
 </div>

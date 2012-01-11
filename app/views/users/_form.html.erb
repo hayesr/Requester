@@ -31,7 +31,7 @@
     <% end %>
   </fieldset>
   
-  <% if current_user.admin? %>
+  <% if current_user.is_admin? %>
   <fieldset id="roles">
     <h4>Roles</h4>
     <p>Members of the Admin role can do anything. Members of the Site Approver role can approve events for sites they are subscribed to. Members of the Staff role can sign-in to view event info.</p>

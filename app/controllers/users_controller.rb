@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       params[:user].delete(:password_confirmation)
     end
     
-    if current_user.admin?
+    if current_user.is_admin?
       attribs = {'site_ids' => [], 'need_ids' => [], 'role_ids' => []}.merge(params[:user] || {})
     else
       attribs = params[:user]
