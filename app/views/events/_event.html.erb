@@ -38,14 +38,18 @@
         <% end %>
       </div>
     
-      <% unless event.note.nil? %>
+      
       <div class="notes">
         <strong>Notes</strong>
         <div class="body">
-          <%= simple_format(event.note)%>
+          <% if event.note.nil? %>
+            No notes given
+          <% else %>
+            <%= simple_format(event.note)%>
+          <% end %>
         </div>
       </div>
-      <% end %>
+      
     </div>
     <div class="drawer_bottom">
       
@@ -57,13 +61,14 @@
       <div class="edit_event">
         <%= link_to 'Edit', edit_event_path(event) %>
       </div>
-      <div class="deny_event button">
-        <%= link_to 'Deny', edit_denial_for_event_path(event) %>
+      <div class="event_state_actions">
+        <div class="deny_event button">
+          <%= link_to 'Deny', edit_denial_for_event_path(event) %>
+        </div>
+        <div class="approve_event button">
+          <%= link_to 'Approve', approve_event_path(event), :method => :put %>
+        </div>
       </div>
-      <div class="approve_event button">
-        <%= link_to 'Approve', approve_event_path(event), :method => :put %>
-      </div>
-      
     </div><!-- /.event_bottom -->
     
   </div><!-- /.event_drawer -->
