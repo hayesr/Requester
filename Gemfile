@@ -21,6 +21,7 @@ group :development do
      gem 'foreman'
      gem 'letter_opener', :git => 'https://github.com/ryanb/letter_opener.git'
      gem 'ruby-debug19'
+     gem 'capistrano'
 end
 
 group :test do
