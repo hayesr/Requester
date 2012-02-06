@@ -1,9 +1,10 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.2.0.rc2'
+gem 'rails', '~> 3.2.1'
 
 gem 'sqlite3'
 gem 'capistrano'
+gem 'capistrano-ext'
 gem 'state_machine'
 gem 'jquery-rails'
 gem 'sass-rails', '~> 3.2.3'

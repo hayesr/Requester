@@ -9,3 +9,4 @@ tmp/
 config/deploy*
 config/database.yml
 TODO
+Gemfile.lock
