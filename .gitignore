@@ -5,3 +5,4 @@ tmp/
 .sass-cache/
 ._*
 .DS_Store
+config/deploy.rb
