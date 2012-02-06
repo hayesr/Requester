@@ -1,8 +1,11 @@
 .bundle
 db/*.sqlite3
+db/seeds.rb
 log/*.log
 tmp/
 .sass-cache/
 ._*
 .DS_Store
-config/deploy.rb
+config/deploy*
+config/database.yml
+TODO
