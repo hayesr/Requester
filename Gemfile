@@ -36,3 +36,7 @@ group :development, :test do
   gem 'guard-test'
   gem 'growl'
 end
+
+group :production do
+  gem 'mysql'
+end
