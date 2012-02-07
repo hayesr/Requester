@@ -1,7 +1,11 @@
 Requester::Application.routes.draw do
-  devise_for :users, :path_prefix => 'auth' do
-    root :to => "events#index"
-  end
+  
+  # root :to => "events#new"
+  
+  devise_for :users, :path => 'auth'
+  # devise_scope :user do
+  #   root :to => "events#index"
+  # end
   resources :users
   
   match 'events/pending(/:site)' => 'events#pending', :as => 'pending_events', :via => :get
@@ -17,6 +21,7 @@ Requester::Application.routes.draw do
     end
   end
   
+  root :to => "events#new"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -68,7 +73,7 @@ Requester::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
-  root :to => "events#new"
+  
 
   # See how all your routes lay out with "rake routes"
 
