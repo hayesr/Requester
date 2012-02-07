@@ -7,7 +7,10 @@ gem 'capistrano'
 gem 'capistrano-ext'
 gem 'state_machine'
 gem 'jquery-rails'
-gem 'sass-rails', '~> 3.2.3'
+group :assets do
+  gem 'sass-rails',   "~> 3.2.3"
+  gem 'uglifier'
+end
 gem 'less'
 gem 'coffee-script'
 gem 'devise'
