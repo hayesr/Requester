@@ -79,6 +79,7 @@
             }
         }
         .event_drawer{
+            color: $back-color;
             .drawer_top{
                 background: url('drawer-top-back.png') repeat-x left top;
                 min-height: 12em;
