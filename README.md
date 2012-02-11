@@ -7,6 +7,7 @@ Contact me for more info:
 eric (at) erichayes.net
 
 Twitter: @ehayes
+
 Github: https://github.com/hayesr
 
 You may use this project as you like, I only ask that you credit me if you make derivative works. Thanks!
