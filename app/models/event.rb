@@ -22,7 +22,7 @@ class Event < ActiveRecord::Base
   
   # scope by site, accepts int or array
   def self.by_site(site)
-    where(:site_id => site).order('site_id')
+    where(:site_id => site).order('site_id').includes(:needs)
   end
   
   def self.pending
